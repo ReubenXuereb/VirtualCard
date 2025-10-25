@@ -23,7 +23,7 @@
 	</modules>
 
 	<properties>
-		<revision>1.0.0-SNAPSHOT</revision>
+		<revision>1.1.0-SNAPSHOT</revision>
 		<java.version>17</java.version>
 	</properties>
 
@@ -36,15 +36,5 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 
 </project>

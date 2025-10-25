@@ -1,4 +1,4 @@
-package com.example.nium.virtualcard.core.entity.model;
+package com.example.nium.virtualcard.core.model;
 
 public enum TransactionType {
     CREATE,

@@ -1,18 +1,19 @@
 package com.example.nium.virtualcard.core.entity;
 
-import com.example.nium.virtualcard.core.entity.model.CardStatus;
+import com.example.nium.virtualcard.core.model.CardStatus;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "cards")
-@Data
+@Getter
+@Setter
 public class Card {
 
     @Id
@@ -41,5 +42,53 @@ public class Card {
         this.cardholderName = cardholderName;
         this.balance = balance;
         this.status = status;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCardholderName() {
+        return cardholderName;
+    }
+
+    public void setCardholderName(String cardholderName) {
+        this.cardholderName = cardholderName;
+    }
+
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public CardStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(CardStatus status) {
+        this.status = status;
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
     }
 }

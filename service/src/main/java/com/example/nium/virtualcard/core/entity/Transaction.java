@@ -1,6 +1,6 @@
 package com.example.nium.virtualcard.core.entity;
 
-import com.example.nium.virtualcard.core.entity.model.TransactionType;
+import com.example.nium.virtualcard.core.model.TransactionType;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -31,11 +31,26 @@ public class Transaction {
     private LocalDateTime createdAt = LocalDateTime.now();
 
     public Transaction() {}
-    
-    public Transaction(Long id, Card card, TransactionType type, BigDecimal amount) {
-        this.id = id;
+
+    public Transaction(Card card, TransactionType type, BigDecimal amount) {
         this.card = card;
         this.type = type;
+        this.amount = amount;
+    }
+
+    public TransactionType getType() {
+        return type;
+    }
+
+    public void setType(TransactionType type) {
+        this.type = type;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 }
