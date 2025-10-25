@@ -1,21 +1,15 @@
-package com.example.nium.virtualcard.core.model;
+package com.example.nium.virtualcard.api.model;
 
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
 
 import java.math.BigDecimal;
 
-public class AmountRequest {
-
+public class AmountToSpendDto {
 
     @NotNull
     @DecimalMin(value = "0.01")
     private BigDecimal amount;
-
-    public AmountRequest(BigDecimal amount) {
-        this.amount = amount;
-    }
 
     public BigDecimal getAmount() {
         return amount;
@@ -24,5 +18,4 @@ public class AmountRequest {
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
-
 }

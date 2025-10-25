@@ -1,7 +1,9 @@
 package com.example.nium.virtualcard.api.exceptions;
 
 import com.example.nium.virtualcard.api.model.ErrorResponseDto;
+import com.example.nium.virtualcard.core.exceptions.CardBlockedException;
 import com.example.nium.virtualcard.core.exceptions.CardNotFoundException;
+import com.example.nium.virtualcard.core.exceptions.InsufficientFundsException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,5 +33,27 @@ public class GlobalExceptionHandler {
                 request.getRequestURI()
         );
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(InsufficientFundsException.class)
+    public ResponseEntity<ErrorResponseDto> handleInsufficientFunds(InsufficientFundsException ex, HttpServletRequest request) {
+        ErrorResponseDto error = new ErrorResponseDto(
+                HttpStatus.BAD_REQUEST.value(),
+                "INSUFFICIENT_FUNDS",
+                ex.getMessage(),
+                request.getRequestURI()
+        );
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(CardBlockedException.class)
+    public ResponseEntity<ErrorResponseDto> handleCardBlocked(CardBlockedException ex, HttpServletRequest request) {
+        ErrorResponseDto error = new ErrorResponseDto(
+                HttpStatus.FORBIDDEN.value(),
+                "CARD_BLOCKED",
+                ex.getMessage(),
+                request.getRequestURI()
+        );
+        return new ResponseEntity<>(error, HttpStatus.FORBIDDEN);
     }
 }

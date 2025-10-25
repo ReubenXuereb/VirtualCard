@@ -1,6 +1,7 @@
 package com.example.nium.virtualcard.api.controller;
 
-import com.example.nium.virtualcard.api.mapper.CardDtoMapper;
+import com.example.nium.virtualcard.api.mapper.DtoMapper;
+import com.example.nium.virtualcard.api.model.AmountToSpendDto;
 import com.example.nium.virtualcard.api.model.VirtualCardDto;
 import com.example.nium.virtualcard.api.model.VirtualCardDetailsDto;
 import com.example.nium.virtualcard.core.entity.Card;
@@ -23,13 +24,19 @@ public class VirtualCardController {
 
     @PostMapping("/create")
     public ResponseEntity<VirtualCardDto> createCard(@RequestBody @Valid VirtualCardDto request) {
-        Card card = cardService.createCard(CardDtoMapper.toModel(request));
-        return ResponseEntity.ok(CardDtoMapper.toDto(card));
+        Card card = cardService.createCard(DtoMapper.toModel(request));
+        return ResponseEntity.ok(DtoMapper.toDto(card));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<VirtualCardDetailsDto> getCard(@PathVariable Long id) {
         Card card = cardService.getCard(id);
-        return ResponseEntity.ok(CardDtoMapper.toCardDetailsDto(card));
+        return ResponseEntity.ok(DtoMapper.toCardDetailsDto(card));
+    }
+
+    @PostMapping("/{id}/spend")
+    public ResponseEntity<VirtualCardDto> spend(@PathVariable Long id, @RequestBody @Valid AmountToSpendDto request) {
+        Card card = cardService.spend(id, DtoMapper.toSpendModel(request));
+        return ResponseEntity.ok(DtoMapper.toDto(card));
     }
 }
