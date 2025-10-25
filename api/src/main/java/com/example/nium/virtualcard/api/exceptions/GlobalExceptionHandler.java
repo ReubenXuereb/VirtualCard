@@ -3,7 +3,6 @@ package com.example.nium.virtualcard.api.exceptions;
 import com.example.nium.virtualcard.api.model.ErrorResponseDto;
 import com.example.nium.virtualcard.core.exceptions.CardNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
-import org.hibernate.TypeMismatchException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +11,7 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @org.springframework.web.bind.annotation.ExceptionHandler(CardNotFoundException.class)
+    @ExceptionHandler(CardNotFoundException.class)
     public ResponseEntity<ErrorResponseDto> handleCardNotFound(CardNotFoundException ex, HttpServletRequest request) {
         ErrorResponseDto error = new ErrorResponseDto(
                 HttpStatus.NOT_FOUND.value(),
