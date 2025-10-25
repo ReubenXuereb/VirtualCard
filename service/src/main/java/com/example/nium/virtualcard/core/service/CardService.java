@@ -2,6 +2,7 @@ package com.example.nium.virtualcard.core.service;
 
 import com.example.nium.virtualcard.core.entity.Card;
 import com.example.nium.virtualcard.core.entity.Transaction;
+import com.example.nium.virtualcard.core.exceptions.CardNotFoundException;
 import com.example.nium.virtualcard.core.model.CardStatus;
 import com.example.nium.virtualcard.core.model.CreateVirtualCardRequest;
 import com.example.nium.virtualcard.core.model.TransactionType;
@@ -38,4 +39,8 @@ public class CardService {
     }
 
 
+    @Transactional
+    public Card getCard(Long id) {
+        return cardRepository.findById(id).orElseThrow(() -> new CardNotFoundException(id));
+    }
 }
