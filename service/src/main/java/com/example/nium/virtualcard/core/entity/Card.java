@@ -2,8 +2,6 @@ package com.example.nium.virtualcard.core.entity;
 
 import com.example.nium.virtualcard.core.model.CardStatus;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -33,6 +31,9 @@ public class Card {
 
     @OneToMany(mappedBy = "card", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Transaction> transactions = new ArrayList<Transaction>();
+
+    @Version
+    private Long version;
 
     public Card(){}
 

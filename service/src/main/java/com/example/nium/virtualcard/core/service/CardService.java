@@ -61,7 +61,7 @@ public class CardService {
         card.setBalance(card.getBalance().subtract(request.amount()));
         transactionRepository.save(new Transaction(card, TransactionType.SPEND, request.amount()));
 
-        return card;
+        return cardRepository.save(card);
     }
 
     @Transactional
@@ -75,7 +75,7 @@ public class CardService {
         card.setBalance(card.getBalance().add(request.amount()));
         transactionRepository.save(new Transaction(card, TransactionType.TOPUP, request.amount()));
 
-        return card;
+        return cardRepository.save(card);
     }
 
     public List<Transaction> getTransactionHistory(Long cardId) {
