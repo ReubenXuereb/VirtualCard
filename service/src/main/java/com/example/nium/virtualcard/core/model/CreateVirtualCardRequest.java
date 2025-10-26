@@ -9,32 +9,14 @@ import lombok.Setter;
 import java.math.BigDecimal;
 import java.util.function.BiFunction;
 
-public class CreateVirtualCardRequest {
+public record CreateVirtualCardRequest(
+        @NotBlank
+        String cardholderName,
 
-    @NotBlank
-    private String cardholderName;
-
-    @DecimalMin(value = "0.00", inclusive = true)
-    private BigDecimal initialBalance = BigDecimal.ZERO;
-
-    public CreateVirtualCardRequest(String cardholderName, BigDecimal initialBalance){
-        this.cardholderName = cardholderName;
-        this.initialBalance = initialBalance;
-    }
-
-    public String getCardHolderName() {
-        return cardholderName;
-    }
-
-    public void setCardHolderName(String cardHolderName) {
-        this.cardholderName = cardHolderName;
-    }
-
-    public BigDecimal getInitialBalance() {
-        return initialBalance;
-    }
-
-    public void setInitialBalance(BigDecimal initialBalance) {
-        this.initialBalance = initialBalance;
+        @DecimalMin(value = "0.00", inclusive = true)
+        BigDecimal initialBalance
+) {
+    public CreateVirtualCardRequest(String cardholderName) {
+        this(cardholderName, BigDecimal.ZERO);
     }
 }

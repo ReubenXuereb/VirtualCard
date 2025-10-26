@@ -6,23 +6,8 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
-public class AmountRequest {
-
-
-    @NotNull
-    @DecimalMin(value = "0.01")
-    private BigDecimal amount;
-
-    public AmountRequest(BigDecimal amount) {
-        this.amount = amount;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
-
-}
+public record AmountRequest(
+        @NotNull
+        @DecimalMin(value = "0.01")
+        BigDecimal amount
+){}

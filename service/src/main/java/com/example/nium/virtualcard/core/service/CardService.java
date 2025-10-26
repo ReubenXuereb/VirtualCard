@@ -18,9 +18,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CardService {
 
-    @Autowired
     private final CardRepository cardRepository;
-    @Autowired
     private final TransactionRepository transactionRepository;
 
     public CardService(CardRepository cardRepository, TransactionRepository transactionRepository) {
@@ -31,8 +29,8 @@ public class CardService {
     @Transactional
     public Card createCard(CreateVirtualCardRequest createVirtualCardRequest) {
         Card newCard = new Card(
-                createVirtualCardRequest.getCardHolderName(),
-                createVirtualCardRequest.getInitialBalance(),
+                createVirtualCardRequest.cardholderName(),
+                createVirtualCardRequest.initialBalance(),
                 CardStatus.ACTIVE
         );
         Card save = cardRepository.save(newCard);
@@ -50,16 +48,16 @@ public class CardService {
     public Card spend(Long cardId, AmountRequest request) {
         Card card = getCard(cardId);
 
-        if (card.getBalance().compareTo(request.getAmount()) < 0) {
-            throw new InsufficientFundsException(cardId, request.getAmount());
+        if (card.getBalance().compareTo(request.amount()) < 0) {
+            throw new InsufficientFundsException(cardId, request.amount());
         }
 
         if (card.getStatus() == CardStatus.BLOCKED) {
             throw new CardBlockedException(cardId);
         }
 
-        card.setBalance(card.getBalance().subtract(request.getAmount()));
-        transactionRepository.save(new Transaction(card, TransactionType.SPEND, request.getAmount()));
+        card.setBalance(card.getBalance().subtract(request.amount()));
+        transactionRepository.save(new Transaction(card, TransactionType.SPEND, request.amount()));
 
         return card;
     }
@@ -72,8 +70,8 @@ public class CardService {
             throw new CardBlockedException(cardId);
         }
 
-        card.setBalance(card.getBalance().add(request.getAmount()));
-        transactionRepository.save(new Transaction(card, TransactionType.TOPUP, request.getAmount()));
+        card.setBalance(card.getBalance().add(request.amount()));
+        transactionRepository.save(new Transaction(card, TransactionType.TOPUP, request.amount()));
 
         return card;
     }

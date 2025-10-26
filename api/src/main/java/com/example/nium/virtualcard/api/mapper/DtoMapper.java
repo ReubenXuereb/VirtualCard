@@ -11,8 +11,8 @@ public class DtoMapper {
 
     public static CreateVirtualCardRequest toModel(VirtualCardDto request) {
         return new CreateVirtualCardRequest(
-                        request.getCardHolderName(),
-                        request.getInitialBalance()
+                        request.cardholderName(),
+                        request.initialBalance()
                 );
     }
 
@@ -35,7 +35,7 @@ public class DtoMapper {
 
     public static AmountRequest toAmountModel(AmountDto request) {
         return new AmountRequest(
-                request.getAmount()
+                request.amount()
         );
     }
 

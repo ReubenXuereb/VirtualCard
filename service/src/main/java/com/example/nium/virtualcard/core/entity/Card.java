@@ -12,8 +12,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "cards")
-@Getter
-@Setter
 public class Card {
 
     @Id
