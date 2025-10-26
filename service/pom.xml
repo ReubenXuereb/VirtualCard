@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.example.nium</groupId>
-        <artifactId>VirtualCard</artifactId>
+        <artifactId>virtualCard</artifactId>
         <version>${revision}</version>
     </parent>
 

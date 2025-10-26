@@ -1,6 +1,6 @@
 package com.example.nium.virtualcard.api.mapper;
 
-import com.example.nium.virtualcard.api.model.AmountToSpendDto;
+import com.example.nium.virtualcard.api.model.AmountDto;
 import com.example.nium.virtualcard.api.model.VirtualCardDto;
 import com.example.nium.virtualcard.api.model.VirtualCardDetailsDto;
 import com.example.nium.virtualcard.core.entity.Card;
@@ -33,7 +33,7 @@ public class DtoMapper {
         );
     }
 
-    public static AmountRequest toSpendModel(AmountToSpendDto request) {
+    public static AmountRequest toAmountModel(AmountDto request) {
         return new AmountRequest(
                 request.getAmount()
         );

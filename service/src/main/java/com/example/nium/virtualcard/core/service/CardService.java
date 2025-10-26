@@ -42,7 +42,6 @@ public class CardService {
     }
 
 
-    @Transactional
     public Card getCard(Long id) {
         return cardRepository.findById(id).orElseThrow(() -> new CardNotFoundException(id));
     }
@@ -61,6 +60,20 @@ public class CardService {
 
         card.setBalance(card.getBalance().subtract(request.getAmount()));
         transactionRepository.save(new Transaction(card, TransactionType.SPEND, request.getAmount()));
+
+        return card;
+    }
+
+    @Transactional
+    public Card topUp(Long cardId, AmountRequest request) {
+        Card card = getCard(cardId);
+
+        if (card.getStatus() == CardStatus.BLOCKED) {
+            throw new CardBlockedException(cardId);
+        }
+
+        card.setBalance(card.getBalance().add(request.getAmount()));
+        transactionRepository.save(new Transaction(card, TransactionType.TOPUP, request.getAmount()));
 
         return card;
     }
