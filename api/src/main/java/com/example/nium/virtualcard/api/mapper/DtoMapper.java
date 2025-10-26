@@ -1,11 +1,15 @@
 package com.example.nium.virtualcard.api.mapper;
 
 import com.example.nium.virtualcard.api.model.AmountDto;
+import com.example.nium.virtualcard.api.model.TransactionsDto;
 import com.example.nium.virtualcard.api.model.VirtualCardDto;
 import com.example.nium.virtualcard.api.model.VirtualCardDetailsDto;
 import com.example.nium.virtualcard.core.entity.Card;
+import com.example.nium.virtualcard.core.entity.Transaction;
 import com.example.nium.virtualcard.core.model.AmountRequest;
 import com.example.nium.virtualcard.core.model.CreateVirtualCardRequest;
+
+import java.util.List;
 
 public class DtoMapper {
 
@@ -37,6 +41,20 @@ public class DtoMapper {
         return new AmountRequest(
                 request.amount()
         );
+    }
+
+    public static TransactionsDto toTransactionDto(Transaction transaction) {
+        return new TransactionsDto(
+                transaction.getId(),
+                transaction.getCard().getId(),
+                transaction.getType(),
+                transaction.getAmount(),
+                transaction.getCreatedAt()
+        );
+    }
+
+    public static List<TransactionsDto> toTransactionDtoList(List<Transaction> transactions) {
+        return transactions.stream().map(DtoMapper::toTransactionDto).toList();
     }
 
 }

@@ -15,6 +15,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CardService {
 
@@ -74,5 +76,10 @@ public class CardService {
         transactionRepository.save(new Transaction(card, TransactionType.TOPUP, request.amount()));
 
         return card;
+    }
+
+    public List<Transaction> getTransactionHistory(Long cardId) {
+        getCard(cardId);
+        return transactionRepository.findByCardIdOrderByCreatedAtDesc(cardId);
     }
 }
