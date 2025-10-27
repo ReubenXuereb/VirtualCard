@@ -18,8 +18,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/cards")
 public class VirtualCardController {
-
-    @Autowired
     private final CardService cardService;
 
     public VirtualCardController(CardService cardService) {

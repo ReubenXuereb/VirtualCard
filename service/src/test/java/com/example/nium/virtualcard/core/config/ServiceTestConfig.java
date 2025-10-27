@@ -1,4 +1,4 @@
-package config;
+package com.example.nium.virtualcard.core.config;
 
 import com.example.nium.virtualcard.core.repository.CardRepository;
 import com.example.nium.virtualcard.core.repository.TransactionRepository;
