@@ -15,7 +15,6 @@ import javax.sql.DataSource;
 public class ControllerConfig {
     @Bean
     public DataSource dataSource() {
-        // Configure an embedded H2 database for tests or local dev
         return DataSourceBuilder.create()
                 .driverClassName("org.h2.Driver")
                 .url("jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE")
@@ -28,13 +27,11 @@ public class ControllerConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
         var emf = new LocalContainerEntityManagerFactoryBean();
         emf.setDataSource(dataSource);
-        // Set your entity package(s) here:
         emf.setPackagesToScan("com.example.nium.virtualcard.core.entity");
 
         var vendorAdapter = new HibernateJpaVendorAdapter();
         emf.setJpaVendorAdapter(vendorAdapter);
 
-        // Optional JPA properties
         var jpaProperties = new java.util.Properties();
         jpaProperties.put("hibernate.hbm2ddl.auto", "update"); // or create-drop for tests
         jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");

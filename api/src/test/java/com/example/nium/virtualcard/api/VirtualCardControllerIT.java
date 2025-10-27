@@ -1,28 +1,21 @@
 package com.example.nium.virtualcard.api;
 
-import com.example.nium.virtualcard.api.config.ControllerConfig;
 import com.example.nium.virtualcard.api.controller.VirtualCardController;
-import com.example.nium.virtualcard.api.mapper.DtoMapper;
 import com.example.nium.virtualcard.api.model.VirtualCardDto;
 import com.example.nium.virtualcard.core.entity.Card;
 import com.example.nium.virtualcard.core.entity.Transaction;
 import com.example.nium.virtualcard.core.model.CardStatus;
 import com.example.nium.virtualcard.core.model.CreateVirtualCardRequest;
 import com.example.nium.virtualcard.core.model.TransactionType;
-import com.example.nium.virtualcard.core.repository.CardRepository;
 import com.example.nium.virtualcard.core.service.CardService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.math.BigDecimal;
@@ -30,12 +23,11 @@ import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(VirtualCardController.class)
-//@ContextConfiguration(classes = ControllerConfig.class)
 public class VirtualCardControllerIT {
 
     @Autowired
