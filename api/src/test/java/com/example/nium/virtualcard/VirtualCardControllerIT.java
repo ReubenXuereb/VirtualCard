@@ -1,4 +1,4 @@
-package com.example.nium.virtualcard.api;
+package com.example.nium.virtualcard;
 
 import com.example.nium.virtualcard.api.controller.VirtualCardController;
 import com.example.nium.virtualcard.api.model.VirtualCardDto;

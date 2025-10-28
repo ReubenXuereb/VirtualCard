@@ -1,15 +1,14 @@
 package com.example.nium.virtualcard.api.controller;
 
-import com.example.nium.virtualcard.api.mapper.DtoMapper;
 import com.example.nium.virtualcard.api.model.AmountDto;
-import com.example.nium.virtualcard.api.model.TransactionsDto;
 import com.example.nium.virtualcard.api.model.VirtualCardDto;
+import com.example.nium.virtualcard.api.mapper.DtoMapper;
+import com.example.nium.virtualcard.api.model.TransactionsDto;
 import com.example.nium.virtualcard.api.model.VirtualCardDetailsDto;
 import com.example.nium.virtualcard.core.entity.Card;
 import com.example.nium.virtualcard.core.entity.Transaction;
 import com.example.nium.virtualcard.core.service.CardService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

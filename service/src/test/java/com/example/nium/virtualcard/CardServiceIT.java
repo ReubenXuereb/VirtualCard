@@ -1,6 +1,6 @@
-package com.example.nium.virtualcard.core;
+package com.example.nium.virtualcard;
 
-import com.example.nium.virtualcard.core.config.ServiceTestConfig;
+import com.example.nium.virtualcard.config.ServiceTestConfig;
 import com.example.nium.virtualcard.core.entity.Card;
 import com.example.nium.virtualcard.core.entity.Transaction;
 import com.example.nium.virtualcard.core.model.AmountRequest;
@@ -9,12 +9,10 @@ import com.example.nium.virtualcard.core.model.TransactionType;
 import com.example.nium.virtualcard.core.repository.CardRepository;
 import com.example.nium.virtualcard.core.repository.TransactionRepository;
 import com.example.nium.virtualcard.core.service.CardService;
-import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -29,7 +27,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = ServiceTestConfig.class)
-//@Transactional
 public class CardServiceIT {
 
     @Autowired

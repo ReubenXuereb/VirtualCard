@@ -1,6 +1,5 @@
 package com.example.nium.virtualcard.api.model;
 
-import com.example.nium.virtualcard.core.entity.Card;
 import com.example.nium.virtualcard.core.model.TransactionType;
 
 import java.math.BigDecimal;

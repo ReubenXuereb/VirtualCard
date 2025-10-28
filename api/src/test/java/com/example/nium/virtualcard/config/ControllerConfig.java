@@ -1,4 +1,4 @@
-package com.example.nium.virtualcard.api.config;
+package com.example.nium.virtualcard.config;
 
 import jakarta.persistence.EntityManagerFactory;
 import org.springframework.boot.jdbc.DataSourceBuilder;

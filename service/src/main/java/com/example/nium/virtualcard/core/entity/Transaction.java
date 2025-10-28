@@ -2,7 +2,6 @@ package com.example.nium.virtualcard.core.entity;
 
 import com.example.nium.virtualcard.core.model.TransactionType;
 import jakarta.persistence.*;
-import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

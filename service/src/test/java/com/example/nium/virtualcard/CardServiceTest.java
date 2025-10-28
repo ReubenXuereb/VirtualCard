@@ -1,4 +1,4 @@
-package com.example.nium.virtualcard.core;
+package com.example.nium.virtualcard;
 
 import com.example.nium.virtualcard.core.entity.Card;
 import com.example.nium.virtualcard.core.entity.Transaction;

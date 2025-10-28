@@ -1,9 +1,6 @@
 package com.example.nium.virtualcard.api.model;
 
 import com.example.nium.virtualcard.core.model.CardStatus;
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

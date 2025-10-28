@@ -1,10 +1,6 @@
-package com.example.nium.virtualcard.core.config;
+package com.example.nium.virtualcard.config;
 
-import com.example.nium.virtualcard.core.repository.CardRepository;
-import com.example.nium.virtualcard.core.repository.TransactionRepository;
-import com.example.nium.virtualcard.core.service.CardService;
 import jakarta.persistence.EntityManagerFactory;
-import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;

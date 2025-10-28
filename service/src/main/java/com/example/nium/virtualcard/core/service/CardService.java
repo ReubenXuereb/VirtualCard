@@ -12,7 +12,6 @@ import com.example.nium.virtualcard.core.model.TransactionType;
 import com.example.nium.virtualcard.core.repository.CardRepository;
 import com.example.nium.virtualcard.core.repository.TransactionRepository;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
